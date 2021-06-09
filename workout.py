@@ -11,7 +11,7 @@ class workout(database):
 
     def set_new_workout(self,json_data):
         self._workout_collection.insert_one({
-            "_id":ObjectId(json_data.get("_id")),
+            "username":ObjectId(json_data.get("username")),
             "lesson_name":json_data.get("lesson_name"),
             "subject":json_data.get("subject"),
             "info":json_data.get("info"),
