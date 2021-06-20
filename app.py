@@ -7,6 +7,7 @@ import db_les as les
 import lesson_class as lesson_class
 import university_query_generator
 import workout as work_class
+import success_rate as rate
 
 
 
@@ -104,6 +105,11 @@ def new_workout():
 def get_workouts(username):
     a = work_class.workout()
     return a.get_workouts(username)
+
+@app.route('/api/success/get_all_rate',methods=['GET'])
+def get_rate():
+    a = rate.success_rate()
+    return a.get_all_user_rate()
 
 
 if __name__ == "__main__":
