@@ -6,6 +6,7 @@ from encoder import JSONEncoder
 from flask import Response
 
 from lesson_class import json_lessons
+from success_rate import success_rate
 
 
 usr = user.get_instance()
@@ -43,6 +44,8 @@ class profile(database):
       new_object_id = self.get_user_object_id(usr.username)
       cls_lesson = json_lessons()
       cls_lesson.new_user(new_object_id)
+      rate = success_rate()
+      rate.new_user_rate(new_object_id,usr.username)
       return "true"
    
    def get_user_object_id(self,username):

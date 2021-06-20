@@ -11,7 +11,7 @@ class database:
         self._lessons_collection = self._db.get_collection('Lessons')
         self._tyt_university_collection = self._db.get_collection('Tyt_university')
         self._workout_collection = self._db.get_collection('Workout')
-
+        self._success_rate_collection = self._db.get_collection('Success_rate')
 
 
 
