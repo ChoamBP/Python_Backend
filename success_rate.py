@@ -1,6 +1,8 @@
 from bson.objectid import ObjectId
 from flask import Response
 from database import database
+import json
+import random
 
 
 class success_rate(database):
@@ -24,18 +26,20 @@ class success_rate(database):
                 "_id":ObjectId(object_id)
             },
             {
-                "$set":{"score":score}
+                "$set":{"score":random.random(0,101)}
             }
         )
         return "true"
     
     def get_all_user_rate(self):
-        cursor = self._success_rate_collection.aggregate([
-            {},{"_id":0}
-        ])
+        datas = self._success_rate_collection.find({},
+        {
+            "_id":0
+        })
         result = []
-        for data in cursor:
+        for data in datas:
             result.append(data)
         new_list = sorted(result,key=lambda k: k['score'])
         new_list.reverse()
-        return Response(new_list,mimetype='application/json')
+        print("newlist")
+        return Response(json.dumps(new_list),mimetype='application/json')

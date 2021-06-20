@@ -5,6 +5,7 @@ from encoder import JSONEncoder
 from flask import Response
 from flask.json import jsonify
 import json
+import success_rate as rate
 
 
 class lessons(database):
